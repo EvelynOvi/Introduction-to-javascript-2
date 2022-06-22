@@ -1,21 +1,78 @@
-const operator = prompt('Enter operator to perform the calculation ( either +, -, * or / ): ');
+window.addEventListener("load", () => {
+    Operate();
+})
 
-const num1 = parseFloat(prompt ('Enter the first number: '));
-const num2 = parseFloat(prompt('Enter the second number: '));
+function Operate() {
+    let operator = prompt('Enter operator to perform the calculation ( either +, -, * or / ): ');
 
-let result; // declaration of the variable.
+    if (operator === null) {
+        return;
+    }
 
-if (operator == '+') { 
-    result = num1+  num2;
-}
-else if (operator == '-') {
-    result = num1 - num2;
-}
-else if (operator == '*') {
-    result = num1* num2;
-}
-else {
-    result = num1 / num2; 
-}
+    while (!['+','-','*','/'].includes(operator)) {
+        operator = prompt('Enter operator to perform the calculation ( either +, -, * or / ): ');
+       
 
- window.alert(" Result is" + result);
+        if(operator === null){
+            return;
+        }
+        
+    }
+
+   
+
+    const isNumber = (number) => {
+        if (isNaN(Number(number))) {
+            return false;
+        }
+        return true;
+    }
+
+    let inputtedFirstNumber = prompt("Enter the first number");
+    if (inputtedFirstNumber === null) {
+        return
+    }
+    while (!isNumber(inputtedFirstNumber)) {
+        inputtedFirstNumber = prompt("Input a valid first number");
+        if (inputtedFirstNumber === null) {
+            return;
+        }
+    }
+
+
+
+    let inputtedSecondNumber = prompt("Enter the second number");
+    if (inputtedSecondNumber === null) {
+        return;
+    }
+
+    while (!isNumber(inputtedSecondNumber)) {
+        inputtedSecondNumber = prompt("Input a valid second number");
+        if (inputtedSecondNumber === null) {
+            return;
+        }
+    }
+
+    const num1 = parseFloat(inputtedFirstNumber);
+    const num2 = parseFloat(inputtedSecondNumber);
+
+
+
+    let result; // declaration of the variable.
+
+    if (operator == '+') {
+        result = num1 + num2;
+    }
+    else if (operator == '-') {
+        result = num1 - num2;
+    }
+    else if (operator == '*') {
+        result = num1 * num2;
+    }
+    else if (operator == '/') {
+        result = num1 / num2;
+    }
+
+
+    window.alert(" Your operation: " + num1 + ' ' + operator + ' ' + num2 + ' ' + '= '  + result);
+}
