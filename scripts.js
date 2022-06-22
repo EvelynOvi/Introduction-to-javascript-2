@@ -22,7 +22,7 @@ function Operate() {
    
 
     const isNumber = (number) => {
-        if (isNaN(Number(number))) {
+        if (isNaN(number)) {
             return false;
         }
         return true;
